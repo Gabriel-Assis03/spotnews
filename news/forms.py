@@ -1,6 +1,7 @@
 from django import forms
-from .validators import validate_title_news, validate_date_format
+# from .validators import validate_title_news, validate_date_format
 from .models import News, Category
+
 
 class CategoryModelsForm(forms.ModelForm):
     class Meta:
@@ -10,6 +11,7 @@ class CategoryModelsForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields['name'].label = 'Nome'
+
 
 class NewsModelsForm(forms.ModelForm):
     class Meta:

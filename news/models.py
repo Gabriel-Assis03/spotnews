@@ -15,10 +15,9 @@ class User(models.Model):
     password = models.CharField(max_length=200, null=False)
     role = models.CharField(max_length=200, null=False)
 
-
     def __str__(self):
         return self.name
-    
+
 
 class News(models.Model):
     title = models.CharField(max_length=200, null=False, validators=[validate_title_news])
