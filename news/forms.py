@@ -10,18 +10,22 @@ class CategoryModelsForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields['name'].label = 'Nome'
-        # self.fields['name'].widget = forms.TextInput(attrs={
-        #         'type': 'text',
-        #         'name': 'name',
-        #         'maxlength': '200',
-        #         'required': 'required'
-        #     })
 
-# class NewsModelsForm(forms.ModelForm):
-#     class Meta:
-#         model = News
-#         fields = '__all__'
+class NewsModelsForm(forms.ModelForm):
+    class Meta:
+        model = News
+        fields = '__all__'
+        widgets = {
+            'categories': forms.CheckboxSelectMultiple(),
+        }
 
-#     def __init__(self, *args, **kwargs):
-#         super().__init__(*args, **kwargs)
-#         self.fields['title'].label = 'Título:'
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['title'].label = 'Título'
+        self.fields['content'].label = 'Conteúdo'
+        self.fields['author'].label = 'Autoria'
+        self.fields['created_at'].label = 'Criado em'
+        self.fields['created_at'].widget = forms.DateInput(
+                attrs={"type": "date"})
+        self.fields['image'].label = 'URL da Imagem'
+        self.fields['categories'].label = 'Categorias'
